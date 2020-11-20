@@ -9,7 +9,7 @@
 
 #### 安装教程
 
-1.  下载uibot软件
+1.  下载uibot软件：链接: https://caiyun.139.com/m/i?145CeBKsZVbFb  提取码:YHJz  备注：uibot5.2.0
 2.  下载代码
 3.  导入代码
 4.  在谷歌浏览器打开网页：https://www.xuexi.cn/，并登陆自己的账号
