@@ -1,6 +1,5 @@
 Dim arrayData = ""
 Dim bRet = ""
-Dim sRet = ""
 Dim arrayDataLength = ""
 Dim articleURL  = ""
 dim dictScrollPostion = ""
