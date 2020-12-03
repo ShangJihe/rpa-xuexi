@@ -1,0 +1,3 @@
+dim iPID = ""
+
+iPID = App.Start("C:\\Users\\HP430g5\\Documents\\UIBot\\Projects\\学习强国\\res\\shutdown windows.bat", "0", "1")
