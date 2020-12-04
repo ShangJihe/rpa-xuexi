@@ -1,0 +1,41 @@
+dim bRet = ""
+dim arrElement = ""
+dim sRet = ""
+Function proType
+    Delay 1000
+    #icon("@res:1k24b1jh-iabu-ceej-q5o3-iciisoin0pq4.png")
+    questionType = Text.Get({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"css-selector":".q-header","tag":"DIV","aaname":"*题"}]},10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true})
+    TracePrint questionType
+End Function
+
+Function choose
+        #icon("@res:8rakndf1-f5s8-gm3d-ebou-bf8ejci5iebu.png")
+        Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"SPAN","aaname":"查看提示"}]},"left","click",10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate"})
+        #icon("@res:lepge1nj-ptn0-5ip4-aj3d-pg0qtac9c581.png")
+        answer = Text.Get({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"FONT"}]},10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true})
+        #icon("@res:d8f6g0rs-t1fp-6t4a-9j0s-u61uig7m1mjl.png")
+        answer = Text.Get({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"FONT","idx":1}]},10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true})
+        TracePrint answer
+#icon("@res:phhnpqn0-rtti-0ksc-h5oq-c3ipog44h8v8.png")
+arrElement = UiElement.GetChildren({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"P"}]},{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+For Each dictValue In arrElement
+ 
+For Each key, value In dictValue
+TracePrint value
+ 
+Next
+Next
+#icon("@res:v3i8mse4-u1su-760e-e2jl-glb6m9pkf6fo.png")
+bRet = UiElement.Exists({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"FONT"}]},{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+TracePrint bRet
+#icon("@res:o9o26npe-8cor-ij9p-j7sv-3sge9b3i8h24.png")
+        attr = UiElement.GetAttribute({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"FONT"}]},"color",{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+TracePrint attr
+                #icon("@res:cr7nt7aj-kqf0-vn7i-te3q-q7buiv5nde06.png")
+        Keyboard.InputText({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"INPUT"}]},answer,true,20,10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":500,"sKeyModifiers":[],"sSimulate":"message","bValidate":false,"bClickBeforeInput":false})
+        #icon("@res:rsqhlo1f-gss3-5u53-vt2e-uc9o6u728dkk.png")
+        Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"BUTTON"}]},"left","click",10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"uia"})
+End Function
+        
+
+
