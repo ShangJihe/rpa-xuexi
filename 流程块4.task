@@ -2,6 +2,8 @@
 dim questionType = ""
 dim iRet = ""
 dim sRet = ""
+dim answer = ""
+dim bRet = ""
 dim hWeb = ""
 
 // 每日答题
@@ -17,6 +19,8 @@ For i=1 To 10 step 1
 Delay(2000)
 Next
 // 开始做题
+#icon("@res:4mgbnu08-5r85-2k2i-t7lm-qbnpug5ct516.png")
+        Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"BUTTON","aaname":"交 卷"}]},"left","click",10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate"})
 Function dowork
     #icon("@res:1k24b1jh-iabu-ceej-q5o3-iciisoin0pq4.png")
     questionType = Text.Get({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"css-selector":".q-header","tag":"DIV","aaname":"*题"}]},10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true})
@@ -34,12 +38,12 @@ TracePrint questionType
         TracePrint answer
         #icon("@res:cr7nt7aj-kqf0-vn7i-te3q-q7buiv5nde06.png")
         Keyboard.InputText({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"INPUT"}]},answer,true,20,10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":500,"sKeyModifiers":[],"sSimulate":"message","bValidate":false,"bClickBeforeInput":false})
-        #icon("@res:rsqhlo1f-gss3-5u53-vt2e-uc9o6u728dkk.png")
+        finishPaper
+#icon("@res:rsqhlo1f-gss3-5u53-vt2e-uc9o6u728dkk.png")
         Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"BUTTON"}]},"left","click",10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"uia"})
         
     End If
     If questionType = "单选题"
-        
         #icon("@res:8rakndf1-f5s8-gm3d-ebou-bf8ejci5iebu.png")
         Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"SPAN","aaname":"查看提示"}]},"left","click",10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate"})
         #icon("@res:lepge1nj-ptn0-5ip4-aj3d-pg0qtac9c581.png")
@@ -49,17 +53,18 @@ TracePrint questionType
         TracePrint answer
         Try
             #icon("@res:ke03q3eg-iad8-ha0s-06ln-oci2nfsqq2ip.png")
-            Text.Click({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"DIV","parentid":"app","css-selector":"body>div>div>div>div>div>div>div","idx":3}]},answer,"instr",1,"left","click",10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate"})
+            Text.Click({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"DIV","parentid":"app","css-selector":"body>div>div>div>div>div>div>div","idx":4}]},answer,"instr",1,"left","click",10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate"})
             
         Catch err
             TracePrint err
             answer = LetterFromStr(answer)
-TracePrint answer
-#icon("@res:ke03q3eg-iad8-ha0s-06ln-oci2nfsqq2ip.png")
+            TracePrint answer
+            #icon("@res:ke03q3eg-iad8-ha0s-06ln-oci2nfsqq2ip.png")
             Text.Click({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"DIV","parentid":"app","css-selector":"body>div>div>div>div>div>div>div","idx":3}]},answer,"instr",1,"left","click",10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate"})
         End Try
         
-        #icon("@res:rsqhlo1f-gss3-5u53-vt2e-uc9o6u728dkk.png")
+        finishPaper
+#icon("@res:rsqhlo1f-gss3-5u53-vt2e-uc9o6u728dkk.png")
         Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"BUTTON"}]},"left","click",10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"uia"})
         
     End If
@@ -79,8 +84,8 @@ TracePrint answer
         TracePrint answerLen
 
         If questionLen=answerLen
-    Rem  空的个数与答案个数相同，直接全选
-    TracePrint "  空的个数与答案个数相同，直接全选"
+            Rem  空的个数与答案个数相同，直接全选
+            TracePrint "  空的个数与答案个数相同，直接全选"
             
         For i = 1 To answerLen-1 step 1 
             Select Case i
@@ -98,7 +103,8 @@ TracePrint answer
                 Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"DIV","parentid":"app","aaname":"D. *"}]},"left","click",10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate"})
             End Select
         Next
-        #icon("@res:rsqhlo1f-gss3-5u53-vt2e-uc9o6u728dkk.png")
+        finishPaper
+#icon("@res:rsqhlo1f-gss3-5u53-vt2e-uc9o6u728dkk.png")
         Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"BUTTON"}]},"left","click",10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate"})
     Else
             
@@ -106,13 +112,28 @@ TracePrint answer
         TracePrint "空的个数与答案个数不相同"
         #icon("@res:8rakndf1-f5s8-gm3d-ebou-bf8ejci5iebu.png")
         Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"SPAN","aaname":"查看提示"}]},"left","click",10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate"})
-        #icon("@res:lepge1nj-ptn0-5ip4-aj3d-pg0qtac9c581.png")
-        answer = Text.Get({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"FONT"}]},10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true})
-        #icon("@res:4cb92e8k-55lh-k1fi-uihq-ru95e9qqtpuu.png")
-        answer = Text.Get({     "html": {         "tagName": "font",         "attrMap": {             "css-selector": "body>div>div>div>div>div>div>div>div>font"         },         "index": 0     },     "wnd": [         {             "app": "chrome",             "cls": "Chrome_WidgetWin_1",             "title": "*"         },         {             "cls": "Chrome_RenderWidgetHostHWND",             "title": "Chrome Legacy Window"         }     ] },10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true})
-        TracePrint answer
-        #icon("@res:cr7nt7aj-kqf0-vn7i-te3q-q7buiv5nde06.png")
-        Keyboard.InputText({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"INPUT"}]},answer,true,20,10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":500,"sKeyModifiers":[],"sSimulate":"message","bValidate":false,"bClickBeforeInput":false})
+        // 有一个答案
+        If questionLen = 2
+            #icon("@res:lepge1nj-ptn0-5ip4-aj3d-pg0qtac9c581.png")
+            answer = Text.Get({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"FONT"}]},10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true})
+            TracePrint answer
+            #icon("@res:ke03q3eg-iad8-ha0s-06ln-oci2nfsqq2ip.png")
+            Text.Click({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"DIV","parentid":"app","css-selector":"body>div>div>div>div>div>div>div","idx":4}]},answer,"instr",1,"left","click",10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate"})
+                                            End If
+        // 有两个答案
+        If questionLen = 3
+            #icon("@res:lepge1nj-ptn0-5ip4-aj3d-pg0qtac9c581.png")
+            answer = Text.Get({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"FONT"}]},10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true})
+            TracePrint answer
+            #icon("@res:ke03q3eg-iad8-ha0s-06ln-oci2nfsqq2ip.png")
+            Text.Click({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"DIV","parentid":"app","css-selector":"body>div>div>div>div>div>div>div","idx":4}]},answer,"instr",1,"left","click",10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate"})
+            #icon("@res:t02bpcsf-tu1h-4c71-4utt-t2jfdek847uo.png")
+            answer = Text.Get({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"FONT","idx":1}]},10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true})
+            TracePrint answer
+            #icon("@res:ke03q3eg-iad8-ha0s-06ln-oci2nfsqq2ip.png")
+            Text.Click({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"DIV","parentid":"app","css-selector":"body>div>div>div>div>div>div>div","idx":4}]},answer,"instr",1,"left","click",10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate"})
+        End If
+        finishPaper
         #icon("@res:rsqhlo1f-gss3-5u53-vt2e-uc9o6u728dkk.png")
         Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"BUTTON"}]},"left","click",10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate"})
     End If
@@ -121,4 +142,12 @@ TracePrint answer
     
 End Function
 
+Function finishPaper
+    #icon("@res:nlt9pu6h-c7q6-07nd-ak6s-uf84e9o8c78s.png")
+    isFinished = UiElement.Exists({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"BUTTON","aaname":"交 卷"}]},{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
+    If isFinished
+        #icon("@res:nlt9pu6h-c7q6-07nd-ak6s-uf84e9o8c78s.png")
+        Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"BUTTON","aaname":"交 卷"}]},"left","click",10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate"})
+    End If
+End Function
 
