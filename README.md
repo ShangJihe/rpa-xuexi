@@ -13,7 +13,8 @@
 2.  下载代码
 3.  导入代码
 点击打开，选择解压后的文件夹
-![](https://images.gitee.com/uploads/images/2020/1222/183525_c9562225_1158926.png "屏幕截图.png")
+
+![输入图片说明](https://images.gitee.com/uploads/images/2020/1222/183525_c9562225_1158926.png "屏幕截图.png")
 4.  在谷歌浏览器打开网页：https://www.xuexi.cn/，并登陆自己的账号
 5.  点击运行
 
