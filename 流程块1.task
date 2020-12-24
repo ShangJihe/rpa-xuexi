@@ -1,4 +1,5 @@
-
+Try
+    
 // 每日答题
 // https://pc.xuexi.cn/points/exam-practice.html
 Rem  开始做“每日答题“
@@ -10,6 +11,11 @@ For i=1 To 5 step 1
     dowork
 Delay(1500)
 Next
+Catch err
+    TracePrint err
+    Return ""
+End Try
+
 // 开始做题
 Function dowork
         #icon("@res:7pacjq94-0jdr-oc0t-3bjj-fph98r6cqj21.png")

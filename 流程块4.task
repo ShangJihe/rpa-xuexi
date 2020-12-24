@@ -4,6 +4,13 @@ dim iRet = ""
 dim sRet = ""
 dim answer = ""
 dim bRet = ""
+dim isFinished = ""
+dim questionStringArr = ""
+dim questionString = ""
+dim questionLen = ""
+dim answerLen = ""
+dim allAnswerArr = ""
+dim allAnswer = ""
 dim hWeb = ""
 
 // 每日答题
@@ -150,4 +157,5 @@ Function finishPaper
         Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"BUTTON","aaname":"交 卷"}]},"left","click",10000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":true,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate"})
     End If
 End Function
+
 

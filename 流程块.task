@@ -20,6 +20,8 @@ dim questionLen = ""
 dim listParentId = ""
 Dim channelList = ["第一频道","文艺频道","理论频道","科技频道","党史频道","自然频道","教育频道","学习慕课","法治频道","人物频道","军事频道"]
 
+Try
+
 // hWeb = WebBrowser.Create("chrome","https://www.xuexi.cn/",30000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"sBrowserPath":"","sStartArgs":""})
 Log.SetLevel(3)
 hWeb = WebBrowser.BindBrowser("chrome",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
@@ -136,6 +138,10 @@ For i=0 To arrayDataLength-1
 	swithVideoURL = WebBrowser.SwitchTab(hWeb,"url",videoURL,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
 	
 Next
-
+    
+Catch err
+    TracePrint err
+    return ""
+End Try
 
 

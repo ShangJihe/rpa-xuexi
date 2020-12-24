@@ -1,4 +1,11 @@
 dim questionType = ""
+dim questionStringArr = ""
+dim questionString = ""
+dim questionLen = ""
+dim answerLen = ""
+dim answer = ""
+dim allAnswerArr = ""
+dim allAnswer = ""
 dim hWeb = ""
 
 // 每日答题
