@@ -11,12 +11,13 @@
 3. 下载本项目到本地并解压，__注意：要下载master分支__
 4. 用__谷歌浏览器__提前登陆学习强国官网https://www.xuexi.cn/
 5. 通过uibot打开解压后的文件夹，并点击运行
-![微信截图_20210813160249](C:\Users\HP430g5\Desktop\微信截图_20210813160249.png)
+![微信截图_20210813160249](https://github.com/ShangJihe/rpa-xuexi/blob/master/res/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20210813160249.png)
 
 #### 注意事项
 
 - 要下载master分支
 - 要用谷歌浏览器，并在谷歌浏览器中安装uibot插件
+![微信截图_20210813160249](https://github.com/ShangJihe/rpa-xuexi/blob/master/res/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_202108131602410.jpg)
 - 程序运行期间，不要操作电脑，尤其不要动鼠标
 - 如果单独运行代码块，需注意是否需要注释掉前面几行代码
 
