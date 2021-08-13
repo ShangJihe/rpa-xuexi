@@ -2,146 +2,146 @@ Dim arrayData = ""
 Dim bRet = ""
 Dim arrayDataLength = ""
 Dim articleURL  = ""
-dim dictScrollPostion = ""
+Dim dictScrollPostion = ""
 Dim iRet = ""
-dim videoURLArr = ""
-dim videoURL = ""
-dim answer = ""
-dim questionStringArr = ""
-dim answerLen = ""
-dim allAnswer = ""
-dim questionString = ""
-dim arrRet = ""
-dim allAnswerArr =""
-dim swithVideoURL = ""
-dim randomNum = ""
-dim questionType = ""
-dim questionLen = ""
-dim listParentId = ""
+Dim videoURLArr = ""
+Dim videoURL = ""
+Dim answer = ""
+Dim questionStringArr = ""
+Dim answerLen = ""
+Dim allAnswer = ""
+Dim questionString = ""
+Dim arrRet = ""
+Dim allAnswerArr =""
+Dim swithVideoURL = ""
+Dim randomNum = ""
+Dim questionType = ""
+Dim questionLen = ""
+Dim listParentId = ""
 Dim channelList = ["第一频道","文艺频道","理论频道","科技频道","党史频道","自然频道","教育频道","学习慕课","法治频道","人物频道","军事频道"]
 
 Try
-
-// hWeb = WebBrowser.Create("chrome","https://www.xuexi.cn/",30000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"sBrowserPath":"","sStartArgs":""})
-Log.SetLevel(3)
-hWeb = WebBrowser.BindBrowser("chrome",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
-// 点击首页“我的积分”
-// #icon("@res:pfe6lpqs-7rh8-f1re-5v46-7pddd7la34nj.png")
-// Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"DIV","parentid":"root","aaname":"我的积分"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
-// Mouse.Wheel(2,"down", [],{"iDelayAfter":300,"iDelayBefore":200})
-// 点击 我要选读文章 下的“去看看”
-// #icon("@res:im1ddjgj-81fu-vm6h-6phl-cs5p34d3gpdd.png")
-// Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"DIV","parentid":"app","aaname":"去看看","isleaf":"1"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
-// Mouse.Wheel(2,"down", [],{"iDelayAfter":300,"iDelayBefore":200})
-// 点击首页 “重要新闻”
-#icon("@res:3bjshj5b-jrla-vkgn-omgg-0ohb6gq8ls26.png")
-iRet = WebBrowser.GoURL(hWeb,"https://www.xuexi.cn/",true,{"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"A","css-selector":"body>div>div>header>div>div>a","href":"https://www.xuexi.cn/dc12897105c8c496d783c5e4d3b680a2/9a75e290b9*"}]},30000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
-#icon("@res:eds7aqip-tck1-vfvi-7t1e-tb2v8uo4e3db.png")
-Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"SPAN","parentid":"231c","aaname":"重要新闻"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"uia","bMoveSmoothly":False})
-// 等待 “学习重点” 元素出现
-#icon("@res:afl5vtm5-r367-jrh8-tp3c-ml3n6muvkrl6.png")
-UiElement.Wait({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"SPAN","parentid":"f4ab","aaname":"学习重点"}]},"show",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
-// 抓取文章标题列表
-articleURL = WebBrowser.GetURL(hWeb,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
-arrayData = UiElement.DataScrap({"html":[{"tag":"DIV"}],"wnd":[{"app":"chrome","cls":"Chrome_WidgetWin_1","title":"*"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}]},{"Columns":[{"props":["text"],"selecors":[{"className":"main-view","index":0,"prefix":"","tag":"div","value":"div.main-view"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"_3GhgGH8Y4Zh8H0uBP5aUMD _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"section","value":"section._3GhgGH8Y4Zh8H0uBP5aUMD._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"Iuu474S1L6y5p7yalKQbW grid-gr","index":0,"prefix":">","tag":"div","value":"div.Iuu474S1L6y5p7yalKQbW.grid-gr"},{"className":"grid-cell","index":0,"prefix":">","tag":"div","value":"div.grid-cell"},{"className":"_3GhgGH8Y4Zh8H0uBP5aUMD _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"section","value":"section._3GhgGH8Y4Zh8H0uBP5aUMD._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"Iuu474S1L6y5p7yalKQbW grid-gr","index":1,"prefix":">","tag":"div","value":"div:nth-child(1)"},{"className":"grid-cell","index":0,"prefix":">","tag":"div","value":"div.grid-cell"},{"className":"_3GhgGH8Y4Zh8H0uBP5aUMD _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"section","value":"section._3GhgGH8Y4Zh8H0uBP5aUMD._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"Iuu474S1L6y5p7yalKQbW grid-gr","index":0,"prefix":">","tag":"div","value":"div.Iuu474S1L6y5p7yalKQbW.grid-gr"},{"className":"grid-cell","index":0,"prefix":">","tag":"div","value":"div.grid-cell"},{"className":"_3GhgGH8Y4Zh8H0uBP5aUMD _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"section","value":"section._3GhgGH8Y4Zh8H0uBP5aUMD._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"Iuu474S1L6y5p7yalKQbW grid-gr","index":0,"prefix":">","tag":"div","value":"div.Iuu474S1L6y5p7yalKQbW.grid-gr"},{"className":"grid-cell","index":3,"prefix":">","tag":"div","value":"div:nth-child(3)"},{"className":"_3GhgGH8Y4Zh8H0uBP5aUMD _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"section","value":"section._3GhgGH8Y4Zh8H0uBP5aUMD._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"Iuu474S1L6y5p7yalKQbW grid-gr","index":0,"prefix":">","tag":"div","value":"div.Iuu474S1L6y5p7yalKQbW.grid-gr"},{"className":"grid-cell","index":0,"prefix":">","tag":"div","value":"div.grid-cell"},{"className":"_3GhgGH8Y4Zh8H0uBP5aUMD _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"section","value":"section._3GhgGH8Y4Zh8H0uBP5aUMD._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":1,"prefix":">","tag":"div","value":"div:nth-child(1)"},{"className":"Iuu474S1L6y5p7yalKQbW grid-gr","index":0,"prefix":">","tag":"div","value":"div.Iuu474S1L6y5p7yalKQbW.grid-gr"},{"index":0,"prefix":">","tag":"div","value":"div"},{"className":"_3wnLIRcEni99IWb4rSpguK","index":0,"prefix":">","tag":"div","value":"div._3wnLIRcEni99IWb4rSpguK"},{"className":"text-link-item-title","index":0,"prefix":">","tag":"div","value":"div.text-link-item-title"},{"className":"text-wrap","index":0,"prefix":">","tag":"div","value":"div.text-wrap"},{"className":"text","index":0,"prefix":">","tag":"span","value":"span.text"}]}],"ExtractTable":0},{"objNextLinkElement":"","iMaxNumberOfPage":5,"iMaxNumberOfResult":-1,"iDelayBetweenMS":1000,"bContinueOnError":False})
-// 循环点击前6篇文章，每篇文章停留5+15*4=65秒，然后切换标签页到文章列表
-For i = 4 To 9 Step 1 
-	#icon("@res:5evtvmbm-6j2b-44le-8m7r-gd4ikirglduf.png")
-	Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"SPAN","aaname":arrayData[i][0]}]},"left","click",5000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
-    TracePrint("已点击："&arrayData[i][0])
-	delay 5000
-	For j=0 To 15 Step 1
-		Mouse.Wheel(1,"down", [],{"iDelayAfter":300,"iDelayBefore":200})
-		delay 4000
-	Next
-	// 此处切换标签页时用的地址，但此地址应该是动态的，可通过“获取网页URL”指令获取
-	Keyboard.Press("W", "press", ["Ctrl"],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
-bRet = WebBrowser.SwitchTab(hWeb,"url",articleURL,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
-delay 2000
-Mouse.Wheel(1,"down", [],{"iDelayAfter":300,"iDelayBefore":200})
 	
-Next
-TracePrint("文章完毕，开始视频")
-hWeb = WebBrowser.BindBrowser("chrome",3000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
-bRet = WebBrowser.SwitchTab(hWeb,"url","https://www.xuexi.cn/",{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
-// 随机选取一个频道进行点击
-channelList = ["第一频道","文艺频道","理论频道","科技频道","党史频道","自然频道","影视频道","学习慕课","法治频道","人物频道","军事频道"]
-randomNum = Rnd()
-randomNum = randomNum * UBound(channelList)
-randomNum = Math.Int(randomNum)
-#icon("@res:0esegtg1-7u30-obbl-2llo-t220j4cne7k3.png")
-Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"A","aaname":"学习电视台"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
-#icon("@res:sq3052cn-jnp9-gtdu-k9en-du2s33dr87er.png")
-Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"SPAN","parentid":"495f","aaname":channelList[randomNum]}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
-// 点击频道
-// #icon("@res:73ri26fr-i232-f5pi-7jhu-mn21o3o1v93m.png")
-// Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"SPAN","parentid":"495f","aaname":"第一频道"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
-videoURL = WebBrowser.GetURL(hWeb,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
-TracePrint videoURL
-videoURLArr = Split(videoURL,"#")
-videoURL = videoURLArr[0]
-listParentId = videoURLArr[1]
-TracePrint listParentId
-#icon("@res:jmipsfo0-5heq-ncv2-fcqk-jijg5ao3v3mb.png")
-UiElement.Wait({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"A","css-selector":"body>div>div>header>div>div>a","href":"https://www.xuexi.cn/dc12897105c8c496d783c5e4d3b680a2/9a75e290b9*"}]},"show",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
-#icon("@res:g582e6bg-31qk-c17q-g9ug-9s842sn5qnsh.png")
-Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"SPAN","parentid":listParentId,"aaname":"列表"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
-// 抓取左侧列表
-
-// arrayData = UiElement.DataScrap({"html":[{"id":"1novbsbi47k-5","tag":"SECTION"}],"wnd":[{"app":"chrome","cls":"Chrome_WidgetWin_1","title":"*"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}]},{"Columns":[{"props":["text"],"selecors":[{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":"","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"Iuu474S1L6y5p7yalKQbW grid-gr","index":0,"prefix":">","tag":"div","value":"div.Iuu474S1L6y5p7yalKQbW.grid-gr"},{"className":"grid-cell","index":0,"prefix":">","tag":"div","value":"div.grid-cell"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":0,"prefix":">","tag":"section","value":"section"},{"className":"","index":3,"prefix":">","tag":"div","value":"div:nth-child(3)"},{"className":"_3GhgGH8Y4Zh8H0uBP5aUMD _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"section","value":"section._3GhgGH8Y4Zh8H0uBP5aUMD._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":1,"prefix":">","tag":"div","value":"div:nth-child(1)"},{"index":0,"prefix":">","tag":"div","value":"div"},{"className":"Iuu474S1L6y5p7yalKQbW grid-cell","index":1,"prefix":">","tag":"div","value":"div:nth-child(1)"},{"className":"_3wnLIRcEni99IWb4rSpguK","index":0,"prefix":">","tag":"div","value":"div._3wnLIRcEni99IWb4rSpguK"},{"className":"text-link-item-title","index":0,"prefix":">","tag":"div","value":"div.text-link-item-title"},{"className":"text-wrap","index":0,"prefix":">","tag":"div","value":"div.text-wrap"},{"className":"text","index":0,"prefix":">","tag":"span","value":"span.text"}]}],"ExtractTable":0},{"objNextLinkElement":"","iMaxNumberOfPage":5,"iMaxNumberOfResult":-1,"iDelayBetweenMS":1000,"bContinueOnError":False})
-arrayData = UiElement.DataScrap({"html":[{"id":listParentId,"tag":"SECTION"}],"wnd":[{"app":"chrome","cls":"Chrome_WidgetWin_1","title":"*"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}]},{"Columns":[{"props":["text"],"selecors":[{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":"","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"Iuu474S1L6y5p7yalKQbW grid-gr","index":0,"prefix":">","tag":"div","value":"div.Iuu474S1L6y5p7yalKQbW.grid-gr"},{"className":"grid-cell","index":0,"prefix":">","tag":"div","value":"div.grid-cell"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":0,"prefix":">","tag":"section","value":"section"},{"className":"","index":3,"prefix":">","tag":"div","value":"div:nth-child(3)"},{"className":"_3GhgGH8Y4Zh8H0uBP5aUMD _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"section","value":"section._3GhgGH8Y4Zh8H0uBP5aUMD._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":1,"prefix":">","tag":"div","value":"div:nth-child(1)"},{"index":0,"prefix":">","tag":"div","value":"div"},{"className":"Iuu474S1L6y5p7yalKQbW grid-cell","index":1,"prefix":">","tag":"div","value":"div:nth-child(1)"},{"className":"_3wnLIRcEni99IWb4rSpguK","index":0,"prefix":">","tag":"div","value":"div._3wnLIRcEni99IWb4rSpguK"},{"className":"text-link-item-title","index":0,"prefix":">","tag":"div","value":"div.text-link-item-title"},{"className":"text-wrap","index":0,"prefix":">","tag":"div","value":"div.text-wrap"},{"className":"text","index":0,"prefix":">","tag":"span","value":"span.text"}]}],"ExtractTable":0},{"objNextLinkElement":"","iMaxNumberOfPage":5,"iMaxNumberOfResult":-1,"iDelayBetweenMS":1000,"bContinueOnError":False})
-arrayDataLength = Len(arrayData)
-TracePrint(arrayDataLength)
-For i=0 To 5 Step 1 
-	TracePrint("开始点击："&arrayData[i][0])
-    #icon("@res:mkrb3o60-k9kv-ivtt-0c4k-beklqdgnooh5.png")
-	Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"SPAN","parentid":listParentId,"aaname":arrayData[i][0]}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})    
-    // 2020年11月7日11:27:52，用aaname不管用了，换成根据idx点击
-    // #icon("@res:ninvmfm6-e441-adf5-j1m6-gvtjhcb9936o.png")
-	// Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"DIV","parentid":"1novbsbi47k-5","css-selector":"body>div>div>div>section>div>div>div>div>div>section>div>div>div>div>div>section>div>div>div>div>div>div>div>div>div>section>div>div>div>div>div>section>div>div>div>div>div>section>div>div>div>div>div>div>div>div>div>section>div>div>div>div>div>section>div>div>div>div>div>section>div>div>div>div>div>div>section>div>section>div>div>div>div>div>div>div>div","idx":i*2}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
-	TracePrint("已点击："&arrayData[i][0])
-    // 此处需对等页面加载完成后再进行滚动
-    #icon("@res:2pc68via-sfld-ffo0-ve7p-c5dg8abu8n7b.png")
-    iRet = WebBrowser.WaitPage(hWeb,{"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"A","css-selector":"body>div>div>header>div>div>a","href":"https://www.xuexi.cn/dc12897105c8c496d783c5e4d3b680a2/9a75e290b9*"}]},60000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
-    dictScrollPostion = WebBrowser.GetScroll(hWeb,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
-    WebBrowser.SetScroll(hWeb,{"ScrollLeft":0,"ScrollTop":100},{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
-    WebBrowser.SetScroll(hWeb,{"ScrollLeft":0,"ScrollTop":300},{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
-    For j=0 To 5 Step 1
-		Mouse.Wheel(1,"down", [],{"iDelayAfter":300,"iDelayBefore":200})
+	// hWeb = WebBrowser.Create("chrome","https://www.xuexi.cn/",30000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"sBrowserPath":"","sStartArgs":""})
+	Log.SetLevel(3)
+	hWeb = WebBrowser.BindBrowser("chrome",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
+	// 点击首页“我的积分”
+	// #icon("@res:pfe6lpqs-7rh8-f1re-5v46-7pddd7la34nj.png")
+	// Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"DIV","parentid":"root","aaname":"我的积分"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+	// Mouse.Wheel(2,"down", [],{"iDelayAfter":300,"iDelayBefore":200})
+	// 点击 我要选读文章 下的“去看看”
+	// #icon("@res:im1ddjgj-81fu-vm6h-6phl-cs5p34d3gpdd.png")
+	// Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"DIV","parentid":"app","aaname":"去看看","isleaf":"1"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+	// Mouse.Wheel(2,"down", [],{"iDelayAfter":300,"iDelayBefore":200})
+	// 点击首页 “重要新闻”
+	#icon("@res:3bjshj5b-jrla-vkgn-omgg-0ohb6gq8ls26.png")
+	iRet = WebBrowser.GoURL(hWeb,"https://www.xuexi.cn/",True,{"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"A","css-selector":"body>div>div>header>div>div>a","href":"https://www.xuexi.cn/dc12897105c8c496d783c5e4d3b680a2/9a75e290b9*"}]},30000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
+	#icon("@res:eds7aqip-tck1-vfvi-7t1e-tb2v8uo4e3db.png")
+	Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"SPAN","parentid":"231c","aaname":"重要新闻"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"uia","bMoveSmoothly":False})
+	// 等待 “学习重点” 元素出现
+	#icon("@res:afl5vtm5-r367-jrh8-tp3c-ml3n6muvkrl6.png")
+	UiElement.Wait({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"SPAN","parentid":"f4ab","aaname":"学习重点"}]},"show",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
+	// 抓取文章标题列表
+	articleURL = WebBrowser.GetURL(hWeb,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
+	arrayData = UiElement.DataScrap({"html":[{"tag":"DIV"}],"wnd":[{"app":"chrome","cls":"Chrome_WidgetWin_1","title":"*"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}]},{"Columns":[{"props":["text"],"selecors":[{"className":"main-view","index":0,"prefix":"","tag":"div","value":"div.main-view"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"_3GhgGH8Y4Zh8H0uBP5aUMD _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"section","value":"section._3GhgGH8Y4Zh8H0uBP5aUMD._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"Iuu474S1L6y5p7yalKQbW grid-gr","index":0,"prefix":">","tag":"div","value":"div.Iuu474S1L6y5p7yalKQbW.grid-gr"},{"className":"grid-cell","index":0,"prefix":">","tag":"div","value":"div.grid-cell"},{"className":"_3GhgGH8Y4Zh8H0uBP5aUMD _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"section","value":"section._3GhgGH8Y4Zh8H0uBP5aUMD._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"Iuu474S1L6y5p7yalKQbW grid-gr","index":1,"prefix":">","tag":"div","value":"div:nth-child(1)"},{"className":"grid-cell","index":0,"prefix":">","tag":"div","value":"div.grid-cell"},{"className":"_3GhgGH8Y4Zh8H0uBP5aUMD _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"section","value":"section._3GhgGH8Y4Zh8H0uBP5aUMD._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"Iuu474S1L6y5p7yalKQbW grid-gr","index":0,"prefix":">","tag":"div","value":"div.Iuu474S1L6y5p7yalKQbW.grid-gr"},{"className":"grid-cell","index":0,"prefix":">","tag":"div","value":"div.grid-cell"},{"className":"_3GhgGH8Y4Zh8H0uBP5aUMD _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"section","value":"section._3GhgGH8Y4Zh8H0uBP5aUMD._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"Iuu474S1L6y5p7yalKQbW grid-gr","index":0,"prefix":">","tag":"div","value":"div.Iuu474S1L6y5p7yalKQbW.grid-gr"},{"className":"grid-cell","index":3,"prefix":">","tag":"div","value":"div:nth-child(3)"},{"className":"_3GhgGH8Y4Zh8H0uBP5aUMD _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"section","value":"section._3GhgGH8Y4Zh8H0uBP5aUMD._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"Iuu474S1L6y5p7yalKQbW grid-gr","index":0,"prefix":">","tag":"div","value":"div.Iuu474S1L6y5p7yalKQbW.grid-gr"},{"className":"grid-cell","index":0,"prefix":">","tag":"div","value":"div.grid-cell"},{"className":"_3GhgGH8Y4Zh8H0uBP5aUMD _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"section","value":"section._3GhgGH8Y4Zh8H0uBP5aUMD._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":1,"prefix":">","tag":"div","value":"div:nth-child(1)"},{"className":"Iuu474S1L6y5p7yalKQbW grid-gr","index":0,"prefix":">","tag":"div","value":"div.Iuu474S1L6y5p7yalKQbW.grid-gr"},{"index":0,"prefix":">","tag":"div","value":"div"},{"className":"_3wnLIRcEni99IWb4rSpguK","index":0,"prefix":">","tag":"div","value":"div._3wnLIRcEni99IWb4rSpguK"},{"className":"text-link-item-title","index":0,"prefix":">","tag":"div","value":"div.text-link-item-title"},{"className":"text-wrap","index":0,"prefix":">","tag":"div","value":"div.text-wrap"},{"className":"text","index":0,"prefix":">","tag":"span","value":"span.text"}]}],"ExtractTable":0},{"objNextLinkElement":"","iMaxNumberOfPage":5,"iMaxNumberOfResult":-1,"iDelayBetweenMS":1000,"bContinueOnError":False})
+	// 循环点击前6篇文章，每篇文章停留5+15*4=65秒，然后切换标签页到文章列表
+	For i = 0 To 5 Step 1 
+		#icon("@res:5evtvmbm-6j2b-44le-8m7r-gd4ikirglduf.png")
+		Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"SPAN","aaname":arrayData[i][0]}]},"left","click",5000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+		TracePrint("已点击："&arrayData[i][0])
+		delay 5000
+		For j=0 To 15 Step 1
+			Mouse.Wheel(1,"down", [],{"iDelayAfter":300,"iDelayBefore":200})
+			delay 4000
+		Next
+		// 此处切换标签页时用的地址，但此地址应该是动态的，可通过“获取网页URL”指令获取
+		Keyboard.Press("W", "press", ["Ctrl"],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+		bRet = WebBrowser.SwitchTab(hWeb,"url",articleURL,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
 		delay 2000
+		Mouse.Wheel(1,"down", [],{"iDelayAfter":300,"iDelayBefore":200})
+		
 	Next
-	delay 1000*60*2
-	TracePrint("当前已完成")
-	Keyboard.Press("W", "press", ["Ctrl"],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+	TracePrint("文章完毕，开始视频")
 	hWeb = WebBrowser.BindBrowser("chrome",3000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
-	// bRet = WebBrowser.SwitchTab(hWeb,"url","https://www.xuexi.cn/4426aa87b0b64ac671c96379a3a8bd26/db086044562a57b441c24f2af1c8e101.html",{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
-    swithVideoURL = WebBrowser.SwitchTab(hWeb,"url",videoURL,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
+	bRet = WebBrowser.SwitchTab(hWeb,"url","https://www.xuexi.cn/",{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
+	// 随机选取一个频道进行点击
+	channelList = ["第一频道","文艺频道","理论频道","科技频道","党史频道","自然频道","影视频道","学习慕课","法治频道","人物频道","军事频道"]
+	randomNum = Rnd()
+	randomNum = randomNum * UBound(channelList)
+	randomNum = Math.Int(randomNum)
+	#icon("@res:0esegtg1-7u30-obbl-2llo-t220j4cne7k3.png")
+	Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"A","aaname":"学习电视台"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+	#icon("@res:sq3052cn-jnp9-gtdu-k9en-du2s33dr87er.png")
+	Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"SPAN","parentid":"495f","aaname":channelList[randomNum]}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+	// 点击频道
+	// #icon("@res:73ri26fr-i232-f5pi-7jhu-mn21o3o1v93m.png")
+	// Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"SPAN","parentid":"495f","aaname":"第一频道"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+	videoURL = WebBrowser.GetURL(hWeb,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
+	TracePrint videoURL
+	videoURLArr = Split(videoURL,"#")
+	videoURL = videoURLArr[0]
+	listParentId = videoURLArr[1]
+	TracePrint listParentId
+	#icon("@res:jmipsfo0-5heq-ncv2-fcqk-jijg5ao3v3mb.png")
+	UiElement.Wait({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"A","css-selector":"body>div>div>header>div>div>a","href":"https://www.xuexi.cn/dc12897105c8c496d783c5e4d3b680a2/9a75e290b9*"}]},"show",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
+	#icon("@res:g582e6bg-31qk-c17q-g9ug-9s842sn5qnsh.png")
+	Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"SPAN","parentid":listParentId,"aaname":"列表"}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+	// 抓取左侧列表
 	
-Next
-// 抓取右侧列表
-Rem  右侧列表
-arrayData = UiElement.DataScrap({"html":[{"id":"1novbsbi47k-5","tag":"SECTION"}],"wnd":[{"app":"chrome","cls":"Chrome_WidgetWin_1","title":"*"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}]},{"Columns":[{"props":["text"],"selecors":[{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":"","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"Iuu474S1L6y5p7yalKQbW grid-gr","index":0,"prefix":">","tag":"div","value":"div.Iuu474S1L6y5p7yalKQbW.grid-gr"},{"className":"grid-cell","index":0,"prefix":">","tag":"div","value":"div.grid-cell"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":0,"prefix":">","tag":"section","value":"section"},{"className":"","index":3,"prefix":">","tag":"div","value":"div:nth-child(3)"},{"className":"_3GhgGH8Y4Zh8H0uBP5aUMD _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"section","value":"section._3GhgGH8Y4Zh8H0uBP5aUMD._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":1,"prefix":">","tag":"div","value":"div:nth-child(1)"},{"index":0,"prefix":">","tag":"div","value":"div"},{"className":"Iuu474S1L6y5p7yalKQbW grid-cell","index":2,"prefix":">","tag":"div","value":"div:nth-child(2)"},{"className":"_3wnLIRcEni99IWb4rSpguK","index":0,"prefix":">","tag":"div","value":"div._3wnLIRcEni99IWb4rSpguK"},{"className":"text-link-item-title","index":0,"prefix":">","tag":"div","value":"div.text-link-item-title"},{"className":"text-wrap","index":0,"prefix":">","tag":"div","value":"div.text-wrap"},{"className":"text","index":0,"prefix":">","tag":"span","value":"span.text"}]}],"ExtractTable":0},{"objNextLinkElement":"","iMaxNumberOfPage":5,"iMaxNumberOfResult":-1,"iDelayBetweenMS":1000,"bContinueOnError":False})
-TracePrint(arrayData)
-arrayDataLength = Len(arrayData)
-TracePrint(arrayDataLength)
-For i=0 To arrayDataLength-1
-	// 2020年11月9日18:50:32 用aaname仍然，只是把div换成span即可
-    #icon("@res:mkrb3o60-k9kv-ivtt-0c4k-beklqdgnooh5.png")
-	Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"SPAN","parentid":"1novbsbi47k-5","aaname":arrayData[i][0]}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})    
-    TracePrint("已点击："&arrayData[i][0])
-    #icon("@res:2pc68via-sfld-ffo0-ve7p-c5dg8abu8n7b.png")
-    iRet = WebBrowser.WaitPage(hWeb,{"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"A","css-selector":"body>div>div>header>div>div>a","href":"https://www.xuexi.cn/dc12897105c8c496d783c5e4d3b680a2/9a75e290b9*"}]},60000,{"bContinueOnError":false,"iDelayAfter":300,"iDelayBefore":200})
-	Mouse.Wheel(5,"down", [],{"iDelayAfter":300,"iDelayBefore":200})
-	delay 65000
-    TracePrint("当前已完成")
-	Keyboard.Press("W", "press", ["Ctrl"],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
-	swithVideoURL = WebBrowser.SwitchTab(hWeb,"url",videoURL,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
+	// arrayData = UiElement.DataScrap({"html":[{"id":"1novbsbi47k-5","tag":"SECTION"}],"wnd":[{"app":"chrome","cls":"Chrome_WidgetWin_1","title":"*"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}]},{"Columns":[{"props":["text"],"selecors":[{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":"","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"Iuu474S1L6y5p7yalKQbW grid-gr","index":0,"prefix":">","tag":"div","value":"div.Iuu474S1L6y5p7yalKQbW.grid-gr"},{"className":"grid-cell","index":0,"prefix":">","tag":"div","value":"div.grid-cell"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":0,"prefix":">","tag":"section","value":"section"},{"className":"","index":3,"prefix":">","tag":"div","value":"div:nth-child(3)"},{"className":"_3GhgGH8Y4Zh8H0uBP5aUMD _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"section","value":"section._3GhgGH8Y4Zh8H0uBP5aUMD._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":1,"prefix":">","tag":"div","value":"div:nth-child(1)"},{"index":0,"prefix":">","tag":"div","value":"div"},{"className":"Iuu474S1L6y5p7yalKQbW grid-cell","index":1,"prefix":">","tag":"div","value":"div:nth-child(1)"},{"className":"_3wnLIRcEni99IWb4rSpguK","index":0,"prefix":">","tag":"div","value":"div._3wnLIRcEni99IWb4rSpguK"},{"className":"text-link-item-title","index":0,"prefix":">","tag":"div","value":"div.text-link-item-title"},{"className":"text-wrap","index":0,"prefix":">","tag":"div","value":"div.text-wrap"},{"className":"text","index":0,"prefix":">","tag":"span","value":"span.text"}]}],"ExtractTable":0},{"objNextLinkElement":"","iMaxNumberOfPage":5,"iMaxNumberOfResult":-1,"iDelayBetweenMS":1000,"bContinueOnError":False})
+	arrayData = UiElement.DataScrap({"html":[{"id":listParentId,"tag":"SECTION"}],"wnd":[{"app":"chrome","cls":"Chrome_WidgetWin_1","title":"*"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}]},{"Columns":[{"props":["text"],"selecors":[{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":"","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"Iuu474S1L6y5p7yalKQbW grid-gr","index":0,"prefix":">","tag":"div","value":"div.Iuu474S1L6y5p7yalKQbW.grid-gr"},{"className":"grid-cell","index":0,"prefix":">","tag":"div","value":"div.grid-cell"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":0,"prefix":">","tag":"section","value":"section"},{"className":"","index":3,"prefix":">","tag":"div","value":"div:nth-child(3)"},{"className":"_3GhgGH8Y4Zh8H0uBP5aUMD _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"section","value":"section._3GhgGH8Y4Zh8H0uBP5aUMD._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":1,"prefix":">","tag":"div","value":"div:nth-child(1)"},{"index":0,"prefix":">","tag":"div","value":"div"},{"className":"Iuu474S1L6y5p7yalKQbW grid-cell","index":1,"prefix":">","tag":"div","value":"div:nth-child(1)"},{"className":"_3wnLIRcEni99IWb4rSpguK","index":0,"prefix":">","tag":"div","value":"div._3wnLIRcEni99IWb4rSpguK"},{"className":"text-link-item-title","index":0,"prefix":">","tag":"div","value":"div.text-link-item-title"},{"className":"text-wrap","index":0,"prefix":">","tag":"div","value":"div.text-wrap"},{"className":"text","index":0,"prefix":">","tag":"span","value":"span.text"}]}],"ExtractTable":0},{"objNextLinkElement":"","iMaxNumberOfPage":5,"iMaxNumberOfResult":-1,"iDelayBetweenMS":1000,"bContinueOnError":False})
+	arrayDataLength = Len(arrayData)
+	TracePrint(arrayDataLength)
+	For i=0 To 5 Step 1 
+		TracePrint("开始点击："&arrayData[i][0])
+		#icon("@res:mkrb3o60-k9kv-ivtt-0c4k-beklqdgnooh5.png")
+		Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"SPAN","parentid":listParentId,"aaname":arrayData[i][0]}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})    
+		// 2020年11月7日11:27:52，用aaname不管用了，换成根据idx点击
+		// #icon("@res:ninvmfm6-e441-adf5-j1m6-gvtjhcb9936o.png")
+		// Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"DIV","parentid":"1novbsbi47k-5","css-selector":"body>div>div>div>section>div>div>div>div>div>section>div>div>div>div>div>section>div>div>div>div>div>div>div>div>div>section>div>div>div>div>div>section>div>div>div>div>div>section>div>div>div>div>div>div>div>div>div>section>div>div>div>div>div>section>div>div>div>div>div>section>div>div>div>div>div>div>section>div>section>div>div>div>div>div>div>div>div","idx":i*2}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})
+		TracePrint("已点击："&arrayData[i][0])
+		// 此处需对等页面加载完成后再进行滚动
+		#icon("@res:2pc68via-sfld-ffo0-ve7p-c5dg8abu8n7b.png")
+		iRet = WebBrowser.WaitPage(hWeb,{"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"A","css-selector":"body>div>div>header>div>div>a","href":"https://www.xuexi.cn/dc12897105c8c496d783c5e4d3b680a2/9a75e290b9*"}]},60000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
+		dictScrollPostion = WebBrowser.GetScroll(hWeb,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
+		WebBrowser.SetScroll(hWeb,{"ScrollLeft":0,"ScrollTop":100},{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
+		WebBrowser.SetScroll(hWeb,{"ScrollLeft":0,"ScrollTop":300},{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
+		For j=0 To 5 Step 1
+			Mouse.Wheel(1,"down", [],{"iDelayAfter":300,"iDelayBefore":200})
+			delay 2000
+		Next
+		delay 1000*60*2
+		TracePrint("当前已完成")
+		Keyboard.Press("W", "press", ["Ctrl"],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+		hWeb = WebBrowser.BindBrowser("chrome",3000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
+		// bRet = WebBrowser.SwitchTab(hWeb,"url","https://www.xuexi.cn/4426aa87b0b64ac671c96379a3a8bd26/db086044562a57b441c24f2af1c8e101.html",{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
+		swithVideoURL = WebBrowser.SwitchTab(hWeb,"url",videoURL,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
+		
+	Next
+	// 抓取右侧列表
+	Rem  右侧列表
+	arrayData = UiElement.DataScrap({"html":[{"id":"1novbsbi47k-5","tag":"SECTION"}],"wnd":[{"app":"chrome","cls":"Chrome_WidgetWin_1","title":"*"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}]},{"Columns":[{"props":["text"],"selecors":[{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":"","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"Iuu474S1L6y5p7yalKQbW grid-gr","index":0,"prefix":">","tag":"div","value":"div.Iuu474S1L6y5p7yalKQbW.grid-gr"},{"className":"grid-cell","index":0,"prefix":">","tag":"div","value":"div.grid-cell"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":0,"prefix":">","tag":"section","value":"section"},{"className":"","index":3,"prefix":">","tag":"div","value":"div:nth-child(3)"},{"className":"_3GhgGH8Y4Zh8H0uBP5aUMD _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"section","value":"section._3GhgGH8Y4Zh8H0uBP5aUMD._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"oSnRgpdW2BnrDruxKh9We _3mVsbsHWKWuZwBS5zIrFO9","index":0,"prefix":">","tag":"div","value":"div.oSnRgpdW2BnrDruxKh9We._3mVsbsHWKWuZwBS5zIrFO9"},{"className":"","index":0,"prefix":">","tag":"div","value":"div"},{"className":"","index":1,"prefix":">","tag":"div","value":"div:nth-child(1)"},{"index":0,"prefix":">","tag":"div","value":"div"},{"className":"Iuu474S1L6y5p7yalKQbW grid-cell","index":2,"prefix":">","tag":"div","value":"div:nth-child(2)"},{"className":"_3wnLIRcEni99IWb4rSpguK","index":0,"prefix":">","tag":"div","value":"div._3wnLIRcEni99IWb4rSpguK"},{"className":"text-link-item-title","index":0,"prefix":">","tag":"div","value":"div.text-link-item-title"},{"className":"text-wrap","index":0,"prefix":">","tag":"div","value":"div.text-wrap"},{"className":"text","index":0,"prefix":">","tag":"span","value":"span.text"}]}],"ExtractTable":0},{"objNextLinkElement":"","iMaxNumberOfPage":5,"iMaxNumberOfResult":-1,"iDelayBetweenMS":1000,"bContinueOnError":False})
+	TracePrint(arrayData)
+	arrayDataLength = Len(arrayData)
+	TracePrint(arrayDataLength)
+	For i=0 To arrayDataLength-1
+		// 2020年11月9日18:50:32 用aaname仍然，只是把div换成span即可
+		#icon("@res:mkrb3o60-k9kv-ivtt-0c4k-beklqdgnooh5.png")
+		Mouse.Action({"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"SPAN","parentid":"1novbsbi47k-5","aaname":arrayData[i][0]}]},"left","click",10000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200,"bSetForeground":True,"sCursorPosition":"Center","iCursorOffsetX":0,"iCursorOffsetY":0,"sKeyModifiers":[],"sSimulate":"simulate","bMoveSmoothly":False})    
+		TracePrint("已点击："&arrayData[i][0])
+		#icon("@res:2pc68via-sfld-ffo0-ve7p-c5dg8abu8n7b.png")
+		iRet = WebBrowser.WaitPage(hWeb,{"wnd":[{"cls":"Chrome_WidgetWin_1","title":"*","app":"chrome"},{"cls":"Chrome_RenderWidgetHostHWND","title":"Chrome Legacy Window"}],"html":[{"tag":"A","css-selector":"body>div>div>header>div>div>a","href":"https://www.xuexi.cn/dc12897105c8c496d783c5e4d3b680a2/9a75e290b9*"}]},60000,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
+		Mouse.Wheel(5,"down", [],{"iDelayAfter":300,"iDelayBefore":200})
+		delay 65000
+		TracePrint("当前已完成")
+		Keyboard.Press("W", "press", ["Ctrl"],{"iDelayAfter":300,"iDelayBefore":200,"sSimulate":"simulate"})
+		swithVideoURL = WebBrowser.SwitchTab(hWeb,"url",videoURL,{"bContinueOnError":False,"iDelayAfter":300,"iDelayBefore":200})
+		
+	Next
 	
-Next
-    
 Catch err
-    TracePrint err
-    return ""
+	TracePrint err
+	Return ""
 End Try
 
 
